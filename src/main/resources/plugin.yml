@@ -1,0 +1,11 @@
+name: test1
+version: '${version}'
+main: com.apples.Test1
+api-version: 1.19
+authors: [ ilovapples ]
+description: Plugin testing
+commands:
+  kit:
+    description: Gives diamonds and bricks
+    usage: /<command>
+    permission: apples.kit
