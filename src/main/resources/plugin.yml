@@ -3,7 +3,7 @@ version: '${version}'
 main: com.apples.ApplesSpigotPlugin
 api-version: 1.19
 authors: [ ilovapples ]
-description: Plugin testing
+description: Adds three kits and a discord link. (It's bad, I know. It's my first plugin.)
 commands:
   kit:
     description: Gives kit of choice

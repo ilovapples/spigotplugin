@@ -1,6 +1,8 @@
 package com.apples;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -102,6 +104,21 @@ public final class ApplesSpigotPlugin extends JavaPlugin {
             Bukkit.dispatchCommand(sender, "tellraw @s [\"\",{\"text\":\">>\",\"bold\":true,\"color\":\"#00D1F3\"},{\"text\":\" Discord\",\"color\":\"#0BAEEB\"},{\"text\":\" Link \"},{\"text\":\"<<\",\"bold\":true,\"color\":\"#00D1F3\"},{\"text\":\":\\n\"},{\"text\":\"https://discord.gg\",\"clickEvent\":{\"action\":\"open_url\",\"value\":\"https://discord.gg\"},\"hoverEvent\":{\"action\":\"show_text\",\"contents\":\"Click to open link\"}}]");
 
             return true;
+        }
+    }
+
+    public class Smite implements CommandExecutor {
+        @Override
+        public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
+            Player player = (Player) sender;
+            World world = player.getWorld();
+            if (args.length >= 1) {
+                if (player.getServer().getPlayer(args[0]) != null) {
+                    Player targetplayer = player.getServer().getPlayer(args[0]);
+                    Location location = targetplayer.getLocation();
+                }
+            }
+            return false;
         }
     }
     @Override
