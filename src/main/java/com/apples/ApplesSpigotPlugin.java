@@ -88,10 +88,23 @@ public final class ApplesSpigotPlugin extends JavaPlugin {
 
 
     }
+    
+    public class DiscordLink implements CommandExecutor {
+        @Override
+        public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+            Bukkit.dispatchCommand(sender, "tellraw @p [\"\",{\"text\":\">>\",\"bold\":true,\"color\":\"#00D1F3\"},{\"text\":\" Discord\",\"color\":\"#0BAEEB\"},{\"text\":\" Link \"},{\"text\":\"<<\",\"bold\":true,\"color\":\"#00D1F3\"},{\"text\":\":\n\"},{\"text\":\"https://discord.gg\",\"clickEvent\":{\"action\":\"open_url\",\"value\":\"https://discord.gg\"},\"hoverEvent\":{\"action\":\"show_text\",\"contents\":\"Click to open link\"}}]");
+
+            return true;
+        }
+    }
     @Override
     public void onEnable() {
         // Plugin startup logic
         this.getCommand("kit").setExecutor(new CommandKit());
+
+        //commands for discord linking
+        this.getCommand("dc").setExecutor(new DiscordLink());
+        this.getCommand("discord").setExecutor(new DiscordLink());
         Bukkit.getLogger().info("Server fully initialized on port: " + Bukkit.getPort());
         Bukkit.getLogger().info("On Bukkit version: " + Bukkit.getBukkitVersion());
         Bukkit.getLogger().info("On Minecraft Version: " + Bukkit.getVersion());
