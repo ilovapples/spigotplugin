@@ -6,6 +6,14 @@ authors: [ ilovapples ]
 description: Plugin testing
 commands:
   kit:
-    description: Gives diamonds and bricks
-    usage: /<command>
+    description: Gives kit of choice
+    usage: /kit <user> <kit>
     permission: apples.kit
+  dc:
+    description: Sends you the Discord link
+    usage: /dc
+    permission: apples.dc
+  discord:
+    description: Sends you the Discord link
+    usage: /discord
+    permission: apples.dc
