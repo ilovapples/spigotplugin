@@ -1,6 +1,6 @@
-name: test1
+name: apples-server-plugin
 version: '${version}'
-main: com.apples.Test1
+main: com.apples.ApplesSpigotPlugin
 api-version: 1.19
 authors: [ ilovapples ]
 description: Plugin testing

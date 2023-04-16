@@ -1,18 +1,13 @@
 package com.apples;
 
-import java.util.*;
-import java.lang.String;
-
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandException;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.Hashtable;
 
 public final class ApplesSpigotPlugin extends JavaPlugin {
     public class CommandKit implements CommandExecutor {
@@ -25,7 +20,11 @@ public final class ApplesSpigotPlugin extends JavaPlugin {
                     "minecraft:stone_axe{Enchantments:[{id:unbreaking,lvl:2}]} 1",
                     "minecraft:stone_sword{Enchantments:[{id:sharpness,lvl:2}, {id:unbreaking,lvl:1}]} 1",
                     "minecraft:stone_shovel{Enchantments:[{id:efficiency,lvl:1}, {id:unbreaking,lvl:2}]} 1",
-                    "minecraft:cooked_beef 16"
+                    "minecraft:cooked_beef 16",
+                    "minecraft:leather_helmet{Enchantments:[{id:protection,lvl:2}, {id:unbreaking,lvl:1}]} 1",
+                    "minecraft:leather_chestplate{Enchantments:[{id:protection,lvl:2}, {id:unbreaking,lvl:1}]} 1",
+                    "minecraft:leather_leggings{Enchantments:[{id:protection,lvl:2}, {id:unbreaking,lvl:1}]} 1",
+                    "minecraft:leather_boots{Enchantments:[{id:protection,lvl:2}, {id:unbreaking,lvl:1}]} 1"
             });
             // default kit
             kitItems.put("default", new java.lang.String[]{
@@ -33,7 +32,11 @@ public final class ApplesSpigotPlugin extends JavaPlugin {
                     "minecraft:iron_axe{Enchantments:[{id:efficiency,lvl:2}, {id:unbreaking,lvl:2}]} 1",
                     "minecraft:iron_sword{Enchantments:[{id:sharpness,lvl:3}, {id:unbreaking,lvl:2}]} 1",
                     "minecraft:iron_shovel{Enchantments:[{id:efficiency,lvl:3}, {id:unbreaking,lvl:3}]} 1",
-                    "minecraft:cooked_beef 32"
+                    "minecraft:cooked_beef 32",
+                    "minecraft:iron_helmet{Enchantments:[{id:protection,lvl:3}, {id:unbreaking,lvl:2}]} 1",
+                    "minecraft:iron_chestplate{Enchantments:[{id:protection,lvl:3}, {id:unbreaking,lvl:2}]} 1",
+                    "minecraft:iron_leggings{Enchantments:[{id:protection,lvl:3}, {id:unbreaking,lvl:2}]} 1",
+                    "minecraft:iron_boots{Enchantments:[{id:protection,lvl:3}, {id:unbreaking,lvl:2}]} 1"
             });
             // god kit
             kitItems.put("god", new java.lang.String[]{
@@ -41,7 +44,11 @@ public final class ApplesSpigotPlugin extends JavaPlugin {
                     "minecraft:netherite_axe{Enchantments:[{id:efficiency,lvl:5}, {id:unbreaking,lvl:3}, {id:sharpness,lvl:5}]} 1",
                     "minecraft:netherite_sword{Enchantments:[{id:sharpness,lvl:5}, {id:looting,lvl:3}, {id:unbreaking,lvl:3}, {id:sweeping,lvl:3}]} 1",
                     "minecraft:netherite_shovel{Enchantments:[{id:efficiency,lvl:5}, {id:unbreaking,lvl:3}]} 1",
-                    "minecraft:cooked_beef 64"
+                    "minecraft:cooked_beef 64",
+                    "minecraft:netherite_helmet{Enchantments:[{id:protection,lvl:4}, {id:unbreaking,lvl:3}]} 1",
+                    "minecraft:netherite_chestplate{Enchantments:[{id:protection,lvl:4}, {id:unbreaking,lvl:3}]} 1",
+                    "minecraft:netherite_leggings{Enchantments:[{id:protection,lvl:4}, {id:unbreaking,lvl:3}]} 1",
+                    "minecraft:netherite_boots{Enchantments:[{id:protection,lvl:4}, {id:unbreaking,lvl:3}]} 1"
             });
 
 
@@ -92,7 +99,7 @@ public final class ApplesSpigotPlugin extends JavaPlugin {
     public class DiscordLink implements CommandExecutor {
         @Override
         public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-            Bukkit.dispatchCommand(sender, "tellraw @p [\"\",{\"text\":\">>\",\"bold\":true,\"color\":\"#00D1F3\"},{\"text\":\" Discord\",\"color\":\"#0BAEEB\"},{\"text\":\" Link \"},{\"text\":\"<<\",\"bold\":true,\"color\":\"#00D1F3\"},{\"text\":\":\n\"},{\"text\":\"https://discord.gg\",\"clickEvent\":{\"action\":\"open_url\",\"value\":\"https://discord.gg\"},\"hoverEvent\":{\"action\":\"show_text\",\"contents\":\"Click to open link\"}}]");
+            Bukkit.dispatchCommand(sender, "tellraw @s [\"\",{\"text\":\">>\",\"bold\":true,\"color\":\"#00D1F3\"},{\"text\":\" Discord\",\"color\":\"#0BAEEB\"},{\"text\":\" Link \"},{\"text\":\"<<\",\"bold\":true,\"color\":\"#00D1F3\"},{\"text\":\":\\n\"},{\"text\":\"https://discord.gg\",\"clickEvent\":{\"action\":\"open_url\",\"value\":\"https://discord.gg\"},\"hoverEvent\":{\"action\":\"show_text\",\"contents\":\"Click to open link\"}}]");
 
             return true;
         }
@@ -102,7 +109,7 @@ public final class ApplesSpigotPlugin extends JavaPlugin {
         // Plugin startup logic
         this.getCommand("kit").setExecutor(new CommandKit());
 
-        //commands for discord linking
+        // commands for discord linking
         this.getCommand("dc").setExecutor(new DiscordLink());
         this.getCommand("discord").setExecutor(new DiscordLink());
         Bukkit.getLogger().info("Server fully initialized on port: " + Bukkit.getPort());
